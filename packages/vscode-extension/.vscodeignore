@@ -1,0 +1,21 @@
+# Exclude unnecessary files from VS Code extension package
+node_modules/**
+src/**
+tsconfig.json
+*.ts
+*.map
+.github/**
+.vscode/**
+*.md
+LICENSE
+.gitignore
+.eslintrc.json
+*.log
+coverage/**
+test/**
+*.test.*
+*.spec.*
+out/test/**
+**/.github/**
+**/workflows/**
+**/baseline-check.yml

@@ -1,0 +1,34 @@
+# GitLab CI configuration for Baseline Buddy
+# Add this to your .gitlab-ci.yml or include it
+
+baseline-check:
+  stage: test
+  image: node:20
+  before_script:
+    - npm install -g @baseline-buddy/cicd-plugin
+  script:
+    - baseline-check
+  variables:
+    # Configuration
+    BASELINE_INCLUDE_PATTERNS: "**/*.css,**/*.js,**/*.jsx,**/*.ts,**/*.tsx,**/*.html"
+    BASELINE_EXCLUDE_PATTERNS: "**/node_modules/**,**/dist/**,**/build/**"
+    BASELINE_LEVEL: "limited"
+    BASELINE_FAIL_ON_ERROR: "true"
+    BASELINE_FAIL_ON_WARNING: "false"
+    BASELINE_OUTPUT_FORMAT: "text"
+    BASELINE_ENABLE_AI: "true"
+    BASELINE_COMMENT_ON_MR: "true"
+    BASELINE_JSON_REPORT: "baseline-report.json"
+    BASELINE_HTML_REPORT: "baseline-report.html"
+  artifacts:
+    reports:
+      junit: baseline-report.xml
+    paths:
+      - baseline-report.json
+      - baseline-report.html
+    expire_in: 1 week
+  only:
+    - merge_requests
+    - main
+    - develop
+  allow_failure: false

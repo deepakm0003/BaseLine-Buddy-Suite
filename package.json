@@ -1,0 +1,70 @@
+{
+  "name": "baseline-buddy-suite",
+  "version": "1.0.0",
+  "description": "AI-Powered Ecosystem for Modern Web Features - Complete Baseline compliance toolkit",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:core && npm run build:cli && npm run build:extension && npm run build:dashboard",
+    "build:core": "cd packages/core && npm run build",
+    "build:cli": "cd packages/cli-tool && npm run build",
+    "build:extension": "cd packages/vscode-extension && npm run build",
+    "build:dashboard": "cd packages/dashboard && npm run build",
+    "dev": "concurrently \"npm run dev:core\" \"npm run dev:cli\" \"npm run dev:extension\" \"npm run dev:dashboard\"",
+    "dev:core": "cd packages/core && npm run dev",
+    "dev:cli": "cd packages/cli-tool && npm run dev",
+    "dev:extension": "cd packages/vscode-extension && npm run dev",
+    "dev:dashboard": "cd packages/dashboard && npm run dev",
+    "test": "npm run test:core && npm run test:cli && npm run test:extension && npm run test:dashboard",
+    "test:core": "cd packages/core && npm test",
+    "test:cli": "cd packages/cli-tool && npm test",
+    "test:extension": "cd packages/vscode-extension && npm test",
+    "test:dashboard": "cd packages/dashboard && npm test",
+    "lint": "npm run lint:core && npm run lint:cli && npm run lint:extension && npm run lint:dashboard",
+    "lint:core": "cd packages/core && npm run lint",
+    "lint:cli": "cd packages/cli-tool && npm run lint",
+    "lint:extension": "cd packages/vscode-extension && npm run lint",
+    "lint:dashboard": "cd packages/dashboard && npm run lint",
+    "install:all": "npm install && cd packages/core && npm install && cd ../cli-tool && npm install && cd ../vscode-extension && npm install && cd ../dashboard && npm install && cd ../cicd-plugin && npm install",
+    "clean": "npm run clean:core && npm run clean:cli && npm run clean:extension && npm run clean:dashboard",
+    "clean:core": "cd packages/core && npm run clean",
+    "clean:cli": "cd packages/cli-tool && npm run clean",
+    "clean:extension": "cd packages/vscode-extension && npm run clean",
+    "clean:dashboard": "cd packages/dashboard && npm run clean"
+  },
+  "keywords": [
+    "baseline",
+    "web-features",
+    "browser-compatibility",
+    "css",
+    "javascript",
+    "html",
+    "linter",
+    "vscode-extension",
+    "cli",
+    "dashboard",
+    "ai",
+    "cursor-ai"
+  ],
+  "author": "Baseline Buddy Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "lerna": "^8.0.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baseline-buddy/baseline-buddy-suite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baseline-buddy/baseline-buddy-suite/issues"
+  },
+  "homepage": "https://baseline-buddy.dev"
+}
+

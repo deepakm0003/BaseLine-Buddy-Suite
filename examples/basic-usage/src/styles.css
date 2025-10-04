@@ -1,0 +1,40 @@
+/* Example CSS with Baseline features */
+
+.container {
+  /* Widely available - safe to use */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  /* Newly available - use with caution */
+  container-type: inline-size;
+  container-name: card;
+}
+
+.card h2 {
+  /* Limited support - not recommended */
+  word-break: auto-phrase;
+}
+
+/* Widely available - safe to use */
+@supports (display: grid) {
+  .fallback {
+    display: block;
+  }
+}
+
+/* Newly available - use with fallback */
+@container card (min-width: 300px) {
+  .card-content {
+    font-size: 1.2rem;
+  }
+}
+
+/* Limited support - avoid in production */
+@layer components {
+  .button {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  }
+}

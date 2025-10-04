@@ -1,0 +1,51 @@
+name: Baseline Compliance Check
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  baseline-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build packages
+      run: npm run build
+      
+    - name: Run Baseline check
+      uses: ./packages/cicd-plugin/github-actions
+      with:
+        workspace-path: '.'
+        include-patterns: '**/*.css,**/*.js,**/*.jsx,**/*.ts,**/*.tsx,**/*.html'
+        exclude-patterns: '**/node_modules/**,**/dist/**,**/build/**,**/out/**'
+        baseline-level: 'limited'
+        fail-on-error: 'true'
+        fail-on-warning: 'false'
+        output-format: 'github'
+        enable-ai: 'true'
+        comment-on-pr: 'true'
+        json-report: 'baseline-report.json'
+        html-report: 'baseline-report.html'
+        
+    - name: Upload Baseline report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: baseline-report
+        path: |
+          baseline-report.json
+          baseline-report.html

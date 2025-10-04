@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern HTML with Baseline Features</title>
+    <link rel="stylesheet" href="modern-css.css">
+</head>
+<body>
+    <header>
+        <nav role="navigation" aria-label="Main navigation">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section aria-labelledby="hero-heading">
+            <h1 id="hero-heading">Modern Web Development</h1>
+            <p>Building with Baseline-compliant features</p>
+        </section>
+
+        <section aria-labelledby="features-heading">
+            <h2 id="features-heading">Features</h2>
+            <div class="container">
+                <article class="card">
+                    <h3>CSS Grid</h3>
+                    <p>Modern layout system with Baseline support</p>
+                    <button class="button">Learn More</button>
+                </article>
+                
+                <article class="card featured">
+                    <h3>Container Queries</h3>
+                    <p>Responsive design based on container size</p>
+                    <button class="button">Learn More</button>
+                </article>
+                
+                <article class="card">
+                    <h3>CSS Nesting</h3>
+                    <p>Nested CSS for better organization</p>
+                    <button class="button">Learn More</button>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="form-heading">
+            <h2 id="form-heading">Contact Form</h2>
+            <form aria-labelledby="form-heading">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required aria-describedby="name-help">
+                <div id="name-help">Enter your full name</div>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required aria-describedby="email-help">
+                <div id="email-help">Enter a valid email address</div>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required aria-describedby="message-help"></textarea>
+                <div id="message-help">Enter your message</div>
+                
+                <button type="submit" class="button">Send Message</button>
+            </form>
+        </section>
+
+        <section aria-labelledby="dialog-heading">
+            <h2 id="dialog-heading">Modal Dialog</h2>
+            <button onclick="document.getElementById('modal').showModal()" class="button">
+                Open Modal
+            </button>
+            
+            <dialog id="modal" aria-labelledby="modal-heading">
+                <h3 id="modal-heading">Modal Content</h3>
+                <p>This is a modern dialog element with Baseline support.</p>
+                <button onclick="document.getElementById('modal').close()" class="button">
+                    Close
+                </button>
+            </dialog>
+        </section>
+
+        <section aria-labelledby="details-heading">
+            <h2 id="details-heading">Collapsible Content</h2>
+            <details>
+                <summary>Click to expand</summary>
+                <p>This is collapsible content using the details element.</p>
+            </details>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Modern Web Development. Built with Baseline features.</p>
+    </footer>
+
+    <script src="modern-js.js"></script>
+</body>
+</html>

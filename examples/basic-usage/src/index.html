@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseline Buddy Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Card Title</h2>
+            <div class="card-content">
+                <p>This is a card with modern CSS features.</p>
+            </div>
+        </div>
+        
+        <!-- Widely available - safe to use -->
+        <button class="button">Click me</button>
+        
+        <!-- Newly available - use with fallback -->
+        <dialog id="modal">
+            <h2>Modal Dialog</h2>
+            <p>This is a modal dialog.</p>
+            <button onclick="this.closest('dialog').close()">Close</button>
+        </dialog>
+        
+        <!-- Limited support - not recommended -->
+        <div popover="auto">
+            <p>This is a popover element.</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

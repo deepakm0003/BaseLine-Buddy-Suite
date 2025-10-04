@@ -1,0 +1,13 @@
+{
+  "name": "baseline-buddy-example",
+  "version": "1.0.0",
+  "description": "Example project demonstrating Baseline Buddy Suite",
+  "scripts": {
+    "baseline-check": "baseline-lint ./src",
+    "baseline-check:html": "baseline-lint ./src --format html --output baseline-report.html",
+    "baseline-check:json": "baseline-lint ./src --format json --output baseline-report.json"
+  },
+  "devDependencies": {
+    "baseline-lint": "file:../../packages/cli-tool"
+  }
+}

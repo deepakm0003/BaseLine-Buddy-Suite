@@ -1,0 +1,78 @@
+name: 'Baseline Buddy'
+description: 'AI-powered Baseline compliance checking for modern web features'
+author: 'Baseline Buddy Team'
+
+inputs:
+  workspace-path:
+    description: 'Path to the workspace to scan'
+    required: false
+    default: '.'
+  
+  include-patterns:
+    description: 'File patterns to include (comma-separated)'
+    required: false
+    default: '**/*.css,**/*.js,**/*.jsx,**/*.ts,**/*.tsx,**/*.html'
+  
+  exclude-patterns:
+    description: 'File patterns to exclude (comma-separated)'
+    required: false
+    default: '**/node_modules/**,**/dist/**,**/build/**'
+  
+  baseline-level:
+    description: 'Minimum baseline level to check'
+    required: false
+    default: 'limited'
+  
+  fail-on-error:
+    description: 'Fail the check if errors are found'
+    required: false
+    default: 'true'
+  
+  fail-on-warning:
+    description: 'Fail the check if warnings are found'
+    required: false
+    default: 'false'
+  
+  output-format:
+    description: 'Output format for results'
+    required: false
+    default: 'github'
+  
+  enable-ai:
+    description: 'Enable AI-powered suggestions'
+    required: false
+    default: 'true'
+  
+  comment-on-pr:
+    description: 'Comment on PR with results'
+    required: false
+    default: 'true'
+  
+  github-token:
+    description: 'GitHub token for PR comments'
+    required: false
+    default: '${{ github.token }}'
+  
+  json-report:
+    description: 'Path to save JSON report'
+    required: false
+  
+  html-report:
+    description: 'Path to save HTML report'
+    required: false
+
+outputs:
+  total-issues:
+    description: 'Total number of issues found'
+  errors:
+    description: 'Number of errors found'
+  warnings:
+    description: 'Number of warnings found'
+  info:
+    description: 'Number of info messages found'
+  success:
+    description: 'Whether the check passed'
+
+runs:
+  using: 'node20'
+  main: 'dist/github-actions.js'

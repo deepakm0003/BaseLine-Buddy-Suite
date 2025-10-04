@@ -1,0 +1,73 @@
+/* Test CSS file for Baseline compliance checking */
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 8px;
+  background: white;
+  
+  /* CSS Nesting - Baseline Widely */
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  &:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+  }
+}
+
+/* Container Queries - Baseline Widely */
+@container (min-width: 300px) {
+  .card {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+/* :has() selector - Baseline Widely */
+.card:has(.title) {
+  border: 2px solid blue;
+}
+
+/* CSS Subgrid - Baseline Widely */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-item {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+}
+
+/* backdrop-filter - needs @supports for better compatibility */
+.modal {
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* ::backdrop pseudo-element - Baseline Widely */
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* word-break: auto-phrase - NOT Baseline (Chrome-only) */
+.text {
+  word-break: auto-phrase;
+  line-height: 1.6;
+}
+
+/* Safe alternative */
+.text-safe {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
